@@ -33,7 +33,7 @@ class Program
         //bool gameEnd = false;
         Print(board);
 
-        // The game plays, until winner/loser/draw
+        // The game plays, until winner/draw
         while (true)
         {
             for (int p = 0; p < players.Count; p++)
@@ -41,9 +41,9 @@ class Program
                 var currentPlayer = players[p];
                 Console.WriteLine($"Current player is : {currentPlayer.Name}");
                 Console.Write("\nPlease enter row: ");
-                int row = Convert.ToInt32(Console.ReadLine());
+                int row = Convert.ToInt32(Console.ReadLine()) - 1;
                 Console.Write("Please enter column: ");
-                int col = Convert.ToInt32(Console.ReadLine());
+                int col = Convert.ToInt32(Console.ReadLine()) - 1;
 
                 board[row, col] = currentPlayer.Marker;
                 Print(board);
@@ -72,11 +72,6 @@ class Program
                     break;
                 }
             }
-
-
-            // Check player win.
-
-
         }
 
 
@@ -121,24 +116,6 @@ class Program
         }
         return players;
     }
-
-
-
-
-    //static char ChangeTurn(char currentPlayer)
-    //{
-    //    if (currentPlayer == 'X')
-    //    {
-    //        Console.WriteLine("... is up next");
-    //        return 'O';
-    //    }
-    //    else
-    //    {
-    //        Console.WriteLine("... is up next!");
-    //        return 'X';
-    //    }
-    //}
-
 
     static int getBoardSize()
     {
