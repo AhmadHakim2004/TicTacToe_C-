@@ -105,9 +105,20 @@ class Program
             var p = new Player();
             Console.Write("Enter the players name: ");
             p.Name = Console.ReadLine();
+
             Console.Write($"Pick a letter for {p.Name}: ");
             p.Marker = Console.ReadKey().KeyChar;
 
+            // validateALetter();
+            for (int j = 0; j < players.Count; j++)
+            {
+                while (players[j].Marker == p.Marker) {
+                Console.WriteLine();
+                Console.WriteLine("The letter has taken.");
+                Console.Write($"Pick a letter for {p.Name}: ");
+                p.Marker = Console.ReadKey().KeyChar;
+                }
+            }
             Console.WriteLine();
             Console.WriteLine($"{p.Name} chose '{p.Marker}' as their Tic Tac Toe marker");
             Console.ReadLine();
@@ -116,6 +127,25 @@ class Program
         }
         return players;
     }
+
+    //static char validateALetter()
+    //{
+    //    List<Player> players = new List<Player>();
+    //    var p = new Player();
+
+    //    for (int j = 0; j < players.Count; j++)
+    //    {
+    //        while (players[j].Marker == p.Marker)
+    //        {
+    //            Console.WriteLine();
+    //            Console.WriteLine("The letter has taken.");
+    //            Console.Write($"Pick a letter for {p.Name}: ");
+    //            p.Marker = Console.ReadKey().KeyChar;
+    //        }
+    //    }
+    //    return p.Marker;
+    //}
+
 
     static int getBoardSize()
     {
