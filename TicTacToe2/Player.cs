@@ -4,6 +4,9 @@ namespace TicTacToe2
 	public class Player
 	{
 		public string Name { get; set; }
+		/// <summary>
+		/// Marker on the board for this player
+		/// </summary>
 		public char Marker { get; set; }
     }
 

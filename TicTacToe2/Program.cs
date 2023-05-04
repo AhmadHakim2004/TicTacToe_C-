@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 using TicTacToe2;
 
@@ -106,19 +107,17 @@ class Program
             Console.Write("Enter the players name: ");
             p.Name = Console.ReadLine();
 
-            Console.Write($"Pick a letter for {p.Name}: ");
-            p.Marker = Console.ReadKey().KeyChar;
 
-            // validateALetter();
-            for (int j = 0; j < players.Count; j++)
-            {
-                while (players[j].Marker == p.Marker) {
-                Console.WriteLine();
-                Console.WriteLine("The letter has taken.");
-                Console.Write($"Pick a letter for {p.Name}: ");
-                p.Marker = Console.ReadKey().KeyChar;
-                }
-            }
+            validateALetter(players, p);
+            //for (int j = 0; j < players.Count; j++)
+            //{
+            //    while (players[j].Marker == p.Marker) {
+            //    Console.WriteLine();
+            //    Console.WriteLine("The letter has taken.");
+            //    Console.Write($"Pick a letter for {p.Name}: ");
+            //    p.Marker = Console.ReadKey().KeyChar;
+            //    }
+            //}
             Console.WriteLine();
             Console.WriteLine($"{p.Name} chose '{p.Marker}' as their Tic Tac Toe marker");
             Console.ReadLine();
@@ -128,23 +127,27 @@ class Program
         return players;
     }
 
-    //static char validateALetter()
-    //{
-    //    List<Player> players = new List<Player>();
-    //    var p = new Player();
+    /// <summary>
+    /// Validate a letter for the player
+    /// </summary>
+    /// <param name="players">123</param>
+    /// <param name="p">***</param>
+    static void validateALetter(List<Player> players, Player p)
+    {
+        Console.Write($"Pick a letter for {p.Name}: ");
+        p.Marker = Console.ReadKey().KeyChar;
 
-    //    for (int j = 0; j < players.Count; j++)
-    //    {
-    //        while (players[j].Marker == p.Marker)
-    //        {
-    //            Console.WriteLine();
-    //            Console.WriteLine("The letter has taken.");
-    //            Console.Write($"Pick a letter for {p.Name}: ");
-    //            p.Marker = Console.ReadKey().KeyChar;
-    //        }
-    //    }
-    //    return p.Marker;
-    //}
+        for (int j = 0; j < players.Count; j++)
+        {
+            while (players[j].Marker == p.Marker || p.Marker == ' ')
+            {
+                Console.WriteLine();
+                Console.WriteLine("The letter has taken.");
+                Console.Write($"Pick another letter: ");
+                p.Marker = Console.ReadKey().KeyChar;
+            }
+        }
+    }
 
 
     static int getBoardSize()
